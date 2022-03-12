@@ -12,4 +12,7 @@ export default class Project extends BaseModel {
 
   @column()
   public technos: string
+
+  @column()
+  public features: string
 }

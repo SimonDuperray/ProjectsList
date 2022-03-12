@@ -28,7 +28,8 @@ export default class UpdateProjectValidator {
       rules.minLength(5)
     ]),
     description: schema.string({ trim: true }),
-    technos: schema.string({ trim: true })
+    technos: schema.string({ trim: true }),
+    features: schema.string({ trim: true })
   })
 
   /**

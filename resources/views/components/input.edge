@@ -24,6 +24,7 @@
          name="{{ name }}" 
          class="form-control {{ flashMessages.has(`errors.${name}`) ? 'is-invalid' : '' }}" 
          id="{{ name }}"
+         rows="{{ name=='features' ? 10 : 3 }}"
       >
          {{ flashMessages.get(name) || value || '' }}
       </textarea>
@@ -37,6 +38,10 @@
          name="{{ name }}" 
          value="{{ flashMessages.get(name) || value || '' }}"
       >
+
+      @if(name==='technos')
+         <div style="color: #fff;" id="emailHelp" class="form-text">Use ',' as separator.</div>
+      @endif
 
    @endif
 

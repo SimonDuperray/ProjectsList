@@ -11,6 +11,12 @@
       type: 'textarea'
    })
    @!component('components/input', {
+      label: 'Project Features',
+      name: 'features',
+      value: project.features || '',
+      type: 'textarea'
+   })
+   @!component('components/input', {
       label: 'Project Technos',
       name: 'technos',
       value: project.technos || ''
