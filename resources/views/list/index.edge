@@ -2,7 +2,7 @@
 
 @section('body')
 
-  <div style="margin-top: 70px;">
+  <div style="margin-top: 20px;">
     
     <section>
       @!component('components/flash')
@@ -24,50 +24,55 @@
     </section>
 
     <section>
-      <ul class="list-group mb-3">
-        @each(project in projects)
-          <div class="col-md-6">
-            <div 
-               class="card" 
-               style="
-                  height: auto;
-                  margin: 15px; 
-                  padding: 10px;
-                  background-color: #1B1C27;
-               "
-            >
+      {{--  <ul class="list-group mb-3">  --}}
+         <div class="row">
+            @each(project in projects)
+            <div class="col-md-4">
                <div 
-                  class="card-body"
+                  class="card" 
+                  style="
+                     height: auto;
+                     margin: 15px; 
+                     padding: 10px;
+                     background-color: #1B1C27;
+                  "
                >
-                  <h5 
-                     style="color: #fff" 
-                     style="color: grey;" 
-                     class="card-title"
+                  <div 
+                     class="card-body"
                   >
-                     <a 
-                        href="{{ route('projects.show', { id: project.id }) }}"
-                        style="color: inherit; text-transform: uppercase;"
+                     <h5 
+                        style="color: #fff" 
+                        style="color: grey;" 
+                        class="card-title"
                      >
-                        {{ project.name }}
-                     </a>
-                  </h5>
-                  <p 
-                     style="margin-bottom: 15px; color: grey;" 
-                     class="card-text"
-                  >
-                     {{ project.description }}
-                  </p>
-                  <div class="languages">
-                     <button class="btn btn-warning">
-                        {{ project.technos }}
-                     </button>
+                        <a 
+                           href="{{ route('projects.show', { id: project.id }) }}"
+                           style="color: inherit; text-transform: uppercase;"
+                        >
+                           {{ project.name }}
+                        </a>
+                     </h5>
+                     <p 
+                        style="margin-bottom: 15px; color: grey;" 
+                        class="card-text"
+                     >
+                        {{ project.description }}
+                     </p>
+                     <div class="languages">
+                        @each(techno in project.splitted_technos)
+                           <button class="btn btn-warning">
+                              {{ techno }}
+                           </button>
+                        @endeach
+                     </div>
                   </div>
                </div>
             </div>
+            
+         @endeach
+
          </div>
-         
-        @endeach
-      </ul>
+      {{--  </ul>  --}}
     </section>
 
   </div>
