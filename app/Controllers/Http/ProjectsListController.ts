@@ -8,6 +8,7 @@ export default class ProjectsListsController {
       const splitted_technos: Array<Array<string>> = [];
       projects.forEach(project => {
          project['splitted_technos'] = project.technos.split(",");
+         project.description = project.description.trim();
       });
       console.log(splitted_technos)
       return view.render('list/index', { 
@@ -37,7 +38,7 @@ export default class ProjectsListsController {
 
    async update ({ response, request, params, session }: HttpContextContract) {
       await this.handleRequest(params, request)
-      session.flash({ success: "Your new project has been saved successfully!"});
+      session.flash({ success: "Your new project has been saved successfully !"});
       return response.redirect().toRoute('home');
    }
 
