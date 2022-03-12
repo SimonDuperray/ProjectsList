@@ -1,0 +1,19 @@
+<form action="" method="post">
+   @!component('components/input', {
+      label: 'Project Name',
+      name: 'name',
+      value: project.name || ''
+   })
+   @!component('components/input', {
+      label: 'Project Description',
+      name: 'description',
+      value: project.description || '',
+      type: 'textarea'
+   })
+   @!component('components/input', {
+      label: 'Project Technos',
+      name: 'technos',
+      value: project.technos || ''
+   })
+   <button style="background-color: #FFC107; border-color: #FFC107; color: #28293D; font-weight: bold;" class="btn btn-primary" type="submit">Save changes</button>
+</form>

@@ -1,0 +1,75 @@
+@layout('layout')
+
+@section('body')
+
+  <div style="margin-top: 70px;">
+    
+    <section>
+      @!component('components/flash')
+      <h1>Welcome {{ user }} !</h1>
+
+      <a 
+        href="{{ route('projects.create') }}"
+        class="btn btn-primary"
+        style="
+          background-color: #FFC107!important;
+          border-color: #FFC107!important;
+          color: #1B1C27!important;
+          letter-spacing: 1px;
+          font-weight: bold;
+        "
+      >
+        Create new project
+      </a>
+    </section>
+
+    <section>
+      <ul class="list-group mb-3">
+        @each(project in projects)
+          <div class="col-md-6">
+            <div 
+               class="card" 
+               style="
+                  height: auto;
+                  margin: 15px; 
+                  padding: 10px;
+                  background-color: #1B1C27;
+               "
+            >
+               <div 
+                  class="card-body"
+               >
+                  <h5 
+                     style="color: #fff" 
+                     style="color: grey;" 
+                     class="card-title"
+                  >
+                     <a 
+                        href="{{ route('projects.show', { id: project.id }) }}"
+                        style="color: inherit; text-transform: uppercase;"
+                     >
+                        {{ project.name }}
+                     </a>
+                  </h5>
+                  <p 
+                     style="margin-bottom: 15px; color: grey;" 
+                     class="card-text"
+                  >
+                     {{ project.description }}
+                  </p>
+                  <div class="languages">
+                     <button class="btn btn-warning">
+                        {{ project.technos }}
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+        @endeach
+      </ul>
+    </section>
+
+  </div>
+
+@endsection 
