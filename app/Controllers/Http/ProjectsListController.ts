@@ -45,9 +45,7 @@ export default class ProjectsListsController {
    private async handleRequest(params: HttpContextContract['params'], request: HttpContextContract['request']) {
       const project = params.id ? await Project.findOrFail(params.id) : new Project();
       const data = await request.validate(UpdateProjectValidator);
-      project
-         .merge(data)
-         .save()
+      project.merge(data).save()
    }
 
 }
