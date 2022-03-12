@@ -31,7 +31,7 @@ export default class ProjectsListsController {
 
    async update ({ response, request, params, session }: HttpContextContract) {
       await this.handleRequest(params, request)
-      session.flash({ success: "Your new project has been saved successfully !"});
+      session.flash({ success: "Your new project has been saved successfully!"});
       return response.redirect().toRoute('home');
    }
 
