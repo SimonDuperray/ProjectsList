@@ -36,6 +36,13 @@ export default class ProjectsListsController {
       return view.render('list/show', { project: project });
    }
 
+   async remove ({ session, params, response}: HttpContextContract) {
+      const project = await Project.findOrFail(params.id);
+      await project.delete();
+      session.flash({ success: "Your project has been deleted successfully !" });
+      return response.redirect().toRoute('home');
+   }
+
    async update ({ response, request, params, session }: HttpContextContract) {
       await this.handleRequest(params, request)
       session.flash({ success: "Your new project has been saved successfully !"});

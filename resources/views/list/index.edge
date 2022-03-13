@@ -24,55 +24,65 @@
     </section>
 
     <section>
-      {{--  <ul class="list-group mb-3">  --}}
-         <div class="row">
-            @each(project in projects)
-            <div class="col-md-6">
+      <div class="row">
+         @each(project in projects)
+         <div class="col-md-6">
+            <div 
+               class="card" 
+               style="
+                  height: auto;
+                  margin: 15px; 
+                  padding: 10px;
+                  background-color: #1B1C27;
+               "
+            >
                <div 
-                  class="card" 
-                  style="
-                     height: auto;
-                     margin: 15px; 
-                     padding: 10px;
-                     background-color: #1B1C27;
-                  "
+                  class="card-body"
                >
-                  <div 
-                     class="card-body"
+                  <h5 
+                     style="color: #fff" 
+                     style="color: grey;" 
+                     class="card-title"
                   >
-                     <h5 
-                        style="color: #fff" 
-                        style="color: grey;" 
-                        class="card-title"
+                     <a 
+                        href="{{ route('projects.show', { id: project.id }) }}"
+                        style="color: inherit; text-transform: uppercase; text-decoration: none;"
                      >
-                        <a 
-                           href="{{ route('projects.show', { id: project.id }) }}"
-                           style="color: inherit; text-transform: uppercase;"
-                        >
+                        <span style="text-decoration: underline;">
                            {{ project.name }}
-                        </a>
-                     </h5>
-                     <p 
-                        style="margin-bottom: 15px; color: grey;" 
-                        class="card-text"
-                     >
-                        {{ project.description }}
-                     </p>
-                     <div class="languages">
-                        @each(techno in project.splitted_technos)
-                           <button class="btn btn-warning" style="margin: 5px;">
-                              {{ techno }}
-                           </button>
-                        @endeach
-                     </div>
+                        </span>
+                        <span>
+                           &nbsp;&nbsp;
+                           <a 
+                              class="btn btn-danger" 
+                              style="color: inherit; text-decoration: none;" 
+                              href="{{ route('projects.remove', { id: project.id }) }}"
+                           >
+                              Delete
+                           </a>
+                        </span>
+                     </a>
+                  </h5>
+                  <p 
+                     style="margin-bottom: 15px; color: grey;" 
+                     class="card-text"
+                  >
+                     {{ project.description }}
+                  </p>
+                  <div class="languages">
+                     @each(techno in project.splitted_technos)
+                        <button class="btn btn-warning" style="margin: 5px;">
+                           {{ techno }}
+                        </button>
+                     @endeach
                   </div>
                </div>
             </div>
-            
-         @endeach
-
          </div>
-      {{--  </ul>  --}}
+         
+      @endeach
+
+      </div>
     </section>
 
   </div>

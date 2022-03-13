@@ -22,6 +22,7 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'ProjectsListController.index').as('home')
 Route.get('/projects/:id', 'ProjectsListController.show').as('projects.show')
+Route.get('projects/:id/remove', 'ProjectsListController.remove').as('projects.remove')
 Route.post('/projects/:id', 'ProjectsListController.update')
 Route.get('/project/new', 'ProjectsListController.create').as('projects.create')
 Route.post('/project/new', 'ProjectsListController.store')
