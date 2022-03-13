@@ -1,0 +1,26 @@
+@layout('layout')
+
+@section('body')
+
+   <div style="margin-top: 20px;">
+      <h1>Login</h1>
+      @!component('components/flash')
+      <form action="" method="post">
+         <div class="mb-3">
+            @!component('components/input', {
+               label: 'Name',
+               name: 'name'
+            })
+         </div>
+         <div class="mb-3">
+            @!component('components/input', {
+               label: 'Password',
+               name: 'password',
+               // type: 'password'
+            })
+         </div>
+         <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+   </div>
+   
+@endsection

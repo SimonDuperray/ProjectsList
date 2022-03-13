@@ -3,17 +3,17 @@ import Project from 'App/Models/Project';
 import UpdateProjectValidator from 'App/Validators/UpdateProjectValidator';
 
 export default class ProjectsListsController {
-   async index ({ view }: HttpContextContract) {
+   async index ({ view, auth }: HttpContextContract) {
       const projects = await Project.all();
       const splitted_technos: Array<Array<string>> = [];
       projects.forEach(project => {
          project['splitted_technos'] = project.technos.split(",");
          project.description = project.description.trim();
       });
-      console.log(splitted_technos)
+      console.log(auth.user);
       return view.render('list/index', { 
          projects: projects,
-         user: 'Simon',
+         user: 'auth', // TODO: change this
          splitted_technos: splitted_technos
       });
    }
