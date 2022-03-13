@@ -1,4 +1,5 @@
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Developer from 'App/Models/Developer'
 
 export default class Project extends BaseModel {
   @column({ isPrimary: true })
@@ -15,4 +16,10 @@ export default class Project extends BaseModel {
 
   @column()
   public features: string
+
+  @column()
+  public dev_id: number
+
+  @belongsTo(() => Developer)
+  public developer: BelongsTo<typeof Developer>
 }

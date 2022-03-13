@@ -1,21 +1,21 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class AddDevIdToProjects extends BaseSchema {
-  protected tableName = 'add_dev_id_to_projects'
+  protected tableName = 'projects'
 
   public async up () {
-    this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-
-      /**
-       * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
-       */
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+    this.schema.alterTable(this.tableName, (table) => {
+      table.integer('dev_id')
+        .unsigned()
+        .references('projects.id')
+        .onDelete('SET NULL')
+        .nullable();
     })
   }
 
   public async down () {
-    this.schema.dropTable(this.tableName)
+    this.schema.alterTable(this.tableName, (table) => {
+      table.dropColumn('dev_id')
+    })
   }
 }
